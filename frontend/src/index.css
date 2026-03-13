@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default Body Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  /* background-color: #F8FAFC;  <-- Is line ko hata de ya niche wale se replace kar */
+  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100; /* Tailwind syntax */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ye zaroori hai taaki React app poori screen le */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Scrollbar Hide (Chat ke liye) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
