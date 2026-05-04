@@ -35,7 +35,7 @@ const ChatWindow = ({ selectedChannel }) => {
   const isFaculty = user?.role === "faculty";
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:5000");
+    socketRef.current = io("https://campussync-pqrs.onrender.com");
     socketRef.current.on("receiveMessage", (newMessage) => {
       setMessages((prev) => [...prev, newMessage]);
     });
