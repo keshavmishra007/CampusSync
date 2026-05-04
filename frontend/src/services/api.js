@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
-
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: "https://campussync-pqrs.onrender.com",
 });
 
 // Attach JWT token automatically
@@ -29,37 +27,37 @@ api.interceptors.response.use(
   }
 );
 
+// ✅ FIXED ROUTES (added /api)
 export const authService = {
-  login: (data) => api.post("/auth/login", data),
-  register: (data) => api.post("/auth/register", data),
-  getMe: () => api.get("/auth/me"),
+  login: (data) => api.post("/api/auth/login", data),
+  register: (data) => api.post("/api/auth/register", data),
+  getMe: () => api.get("/api/auth/me"),
 };
 
 export const chatService = {
-  getChannels: () => api.get("/channels/my"),
+  getChannels: () => api.get("/api/channels/my"),
 
   getMessages: (channelId) =>
-    api.get(`/messages/${channelId}`),
+    api.get(`/api/messages/${channelId}`),
 
-  // ✅ supports text + file upload
-  sendMessage: (data) => api.post("/messages", data),
-  createChannel: (data) => api.post("/channels", data),
+  sendMessage: (data) => api.post("/api/messages", data),
+  createChannel: (data) => api.post("/api/channels", data),
 
   getMembers: (channelId) =>
-    api.get(`/channels/${channelId}/members`),
+    api.get(`/api/channels/${channelId}/members`),
 
   removeMember: (channelId, userId) =>
-    api.delete(`/channels/${channelId}/remove/${userId}`),
+    api.delete(`/api/channels/${channelId}/remove/${userId}`),
 
   muteMember: (channelId, userId) =>
-    api.patch(`/channels/${channelId}/mute/${userId}`),
+    api.patch(`/api/channels/${channelId}/mute/${userId}`),
 
   unmuteMember: (channelId, userId) =>
-    api.patch(`/channels/${channelId}/unmute/${userId}`),
+    api.patch(`/api/channels/${channelId}/unmute/${userId}`),
 };
 
 export const aiService = {
-  chat: (data) => api.post("/ai/chat", data),
+  chat: (data) => api.post("/api/ai/chat", data),
 };
 
 export default api;

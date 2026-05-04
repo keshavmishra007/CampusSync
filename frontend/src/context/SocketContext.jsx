@@ -10,7 +10,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Backend URL here too
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io('https://campussync-pqrs.onrender.com', {
       autoConnect: false, // Login ke baad hi connect karenge manually
     });
     
